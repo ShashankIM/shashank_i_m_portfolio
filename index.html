@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shashank I M | Portfolio</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-dark: #0ea5e9;
+      --border: #1e293b;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #0b1120, #1f2d48);
+      color: var(--text);
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
+      }
+      50% {
+        box-shadow: 0 10px 40px rgba(56, 189, 248, 0.3);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      padding: 24px;
+      margin-bottom: 16px;
+      animation: fadeInUp 0.6s ease-out;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 10px 40px rgba(56, 189, 248, 0.2);
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    .top-bar {
+      margin-bottom: 16px;
+      animation: fadeInUp 0.5s ease-out;
+    }
+    
+    h1, h2, h3 {
+      margin: 0 0 8px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.35rem; color: var(--accent); }
+    h3 { font-size: 1.1rem; }
+    p, li { line-height: 1.55; font-size: 0.95rem; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    a:hover { 
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+    
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+      animation: fadeInUp 0.7s ease-out;
+      flex-shrink: 0;
+    }
+    
+    .profile-info {
+      flex: 1;
+      min-width: 200px;
+      animation: slideInRight 0.7s ease-out;
+    }
+    
+    .profile-info h1 {
+      margin-bottom: 12px;
+    }
+    
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #e2e8f0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.80rem;
+      margin: 4px 4px 4px 0;
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    
+    .badge:hover {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #1e293b, #0b3a5c);
+      color: var(--accent);
+    }
+    
+    ul { padding-left: 20px; margin: 8px 0; }
+    li { 
+      margin-bottom: 8px;
+      transition: all 0.2s ease;
+    }
+    
+    li:hover {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+    
+    .flex-row { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 10px; }
+    .line { border-bottom: 1px solid #1e293b; margin: 12px 0; }
+    .right { color: var(--muted); }
+    
+    .project-item {
+      background: rgba(30, 41, 59, 0.5);
+      border-left: 3px solid var(--accent);
+      padding: 16px;
+      border-radius: 6px;
+      margin: 12px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .project-item:hover {
+      background: rgba(30, 41, 59, 0.8);
+      border-left-color: var(--accent-dark);
+      transform: translateX(4px);
+    }
+    
+    .project-item h4 {
+      margin: 0 0 6px;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+    
+    .project-item p {
+      margin: 4px 0;
+      font-size: 0.92rem;
+    }
+    
+    footer { 
+      text-align: center; 
+      margin-top: 20px; 
+      color: var(--muted); 
+      font-size: 0.86rem; 
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .btn { 
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #0f172a; 
+      border: none; 
+      border-radius: 8px; 
+      padding: 10px 16px; 
+      cursor: pointer; 
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover { 
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+      transform: translateY(-2px);
+    }
+    
+    .section-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #0f172a;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    @media (max-width: 720px) {
+      .container { padding: 16px; }
+      h1 { font-size: 1.75rem; }
+      .profile-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .profile-img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card top-bar">
+      <div class="profile-section">
+        <img src="shashank_I_M.jpeg" alt="Shashank I M" class="profile-img" />
+        <div class="profile-info">
+          <h1>Shashank I M</h1>
+          <p style="margin: 8px 0; color: var(--accent); font-weight: 600;">📅 Born: 7 August 2001</p>
+          <div class="flex-row" style="margin-top: 10px;">
+            <span>📍 Kumta, Uttara Kannada, Karnataka – 581332</span>
+            <span>📧 <a href="mailto:imshashankmukri@gmail.com">imshashankmukri@gmail.com</a></span>
+            <span>📞 6363160401</span>
+            <span>🔗 <a href="https://github.com/ShashankIM" target="_blank">github.com/ShashankIM</a></span>
+          </div>
+        </div>
+      </div>
+      <p>Results-driven Python Automation Engineer with hands-on experience in building AI-powered systems, large-scale monitoring platforms, and computer vision pipelines. Proven ability to automate complex workflows and reduce manual effort by ~80%.</p>
+    </div>
+
+    <div class="card">
+      <h2>Professional Summary</h2>
+      <ul>
+        <li>Python automation, AI system deployment, monitoring architecture.</li>
+        <li>Designed large-scale automation to reduce manual effort by ~80%.</li>
+        <li>Strong capabilities in edge/cloud solutions, reliability, and site-wide dashboarding.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Core Skills</h2>
+      <div class="flex-row">
+        <span class="badge">Python</span>
+        <span class="badge">Bash</span>
+        <span class="badge">API Automation</span>
+        <span class="badge">PyTorch</span>
+        <span class="badge">Scikit-learn</span>
+        <span class="badge">Flask</span>
+        <span class="badge">REST APIs</span>
+        <span class="badge">Docker</span>
+        <span class="badge">Kubernetes</span>
+        <span class="badge">Prometheus</span>
+        <span class="badge">Grafana</span>
+        <span class="badge">RabbitMQ</span>
+        <span class="badge">Linux</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Professional Experience</h2>
+      
+      <h3>Automation Engineer / Prompt Engineer <span class="section-badge">Current</span></h3>
+      <p class="right">Benaka IT Solution | Feb 2025 – Present</p>
+      <p>Responsible for developing AI-driven prompts, designing monitoring systems, and building production-grade automation tools that improve operational efficiency. Train detection and classification models, test implementations, and maintain model performance in production environments to ensure continuous reliability and accuracy.</p>
+
+      <h3 style="margin-top: 20px; color: #60a5fa;">🎯 Prompt Engineering & AI Systems</h3>
+      <ul>
+        <li>Design and optimize AI prompts for web-based AI systems to resolve website issues</li>
+        <li>Validate prompt execution and ensure accurate feature implementation</li>
+        <li>Improve system reliability through prompt testing and refinement</li>
+        <li>Train and test the Detection and CLassification models and maintain the version</li>
+      </ul>
+
+      <h3 style="margin-top: 20px; color: #60a5fa;">🛠️ AI & Computer Vision Projects</h3>
+      <div class="project-item">
+        <h4>Detection & Classification Model Training & Maintenance</h4>
+        <p>End-to-end model lifecycle management including:</p>
+        <ul style="margin: 6px 0 0 0;">
+          <li>Train detection and classification models on prepared datasets</li>
+          <li>Comprehensive testing and evaluation of trained models</li>
+          <li>Performance optimization and accuracy improvements</li>
+          <li>Regular model updates and retraining with new data</li>
+          <li>Production model maintenance and monitoring</li>
+        </ul>
+      </div>
+      <div class="project-item">
+        <h4>Image Crop Platform (Flask + Jinja2)</h4>
+        <p>Web application allowing internal users to upload full-frame images and automatically crop using detection models, streamlining dataset preparation.</p>
+      </div>
+      <div class="project-item">
+        <h4>Model Testing & Evaluation Platform</h4>
+        <p>Support for ONNX detection and classification models with multi-model comparison for accuracy evaluation. Users can upload models and test on images.</p>
+      </div>
+      <div class="project-item">
+        <h4>Video Inference System</h4>
+        <p>Process uploaded videos and generate detection outputs with classification. Tracks line-crossing events with detection details.</p>
+      </div>
+
+      <h3 style="margin-top: 20px; color: #60a5fa;">📊 Monitoring & Reliability Engineering</h3>
+      
+      <div class="project-item">
+        <h4>Decathlon Store Monitoring System (133 Locations)</h4>
+        <p><strong>Objective:</strong> Eliminate manual edge device health checks across 133 stores.</p>
+        <p><strong>Solution Delivered:</strong> Built centralized monitoring dashboard with:</p>
+        <ul style="margin: 6px 0 0 0;">
+          <li>Real-time device health and connectivity checks</li>
+          <li>Storage monitoring and alerts</li>
+          <li>Event validation (edge → cloud)</li>
+          <li>Camera FOV (Field of View) verification</li>
+          <li>Microsoft Teams integration for instant alerts</li>
+        </ul>
+        <p><strong>Impact:</strong> 👉 Reduced manual monitoring effort by ~80%, saved massive time for operations team</p>
+      </div>
+
+      <div class="project-item">
+        <h4>Traffic Violation Monitoring System (22 Locations)</h4>
+        <p><strong>Objective:</strong> Monitor multiple camera feeds and traffic violation events across 22 locations.</p>
+        <p><strong>Solution Delivered:</strong> Built comprehensive monitoring system with:</p>
+        <ul style="margin: 6px 0 0 0;">
+          <li>Camera health and device pinging checks</li>
+          <li>FOV consistency verification</li>
+          <li>Real-time event tracking from all locations</li>
+          <li>Violation event validation and alerting</li>
+          <li>Single dashboard for all 22 camera locations</li>
+          <li>Microsoft Teams integration for incident response</li>
+        </ul>
+        <p><strong>Impact:</strong> 👉 Eliminated manual verification, improved response time significantly</p>
+      </div>
+
+      <div class="project-item">
+        <h4>Web Application Uptime Monitoring System</h4>
+        <p>Built system to monitor multiple web applications' health status. Displays uptime/downtime in unified dashboard, reducing manual checks significantly.</p>
+      </div>
+
+      <h3 style="margin-top: 20px; color: #60a5fa;">🔧 Automation & Data Engineering</h3>
+      <div class="project-item">
+        <h4>Image Dataset Sorting & Deduplication</h4>
+        <p>Python scripts to automatically sort large image datasets without ML models. Detects and removes duplicate images efficiently, improving dataset quality.</p>
+      </div>
+      <div class="project-item">
+        <h4>Feature-Based Image Deduplication</h4>
+        <p>Advanced system using feature extraction to identify and remove duplicate images for efficient dataset optimization.</p>
+      </div>
+      <div class="project-item">
+        <h4>Model Training Pipeline</h4>
+        <p>Automated scripts for data collection, preprocessing, model testing, and validation workflows.</p>
+      </div>
+      <div class="project-item">
+        <h4>Event Data Collection & Analysis</h4>
+        <p>Scripts for event data collection across multiple dates, event gap detection, analysis, and automated report generation.</p>
+      </div>
+      <div class="project-item">
+        <h4>Video-Based Data Collection</h4>
+        <p>Built pipeline to collect training data from video sources for ML model development.</p>
+      </div>
+
+      <h3 style="margin-top: 20px; color: #60a5fa;">🚀 Internal Tools & Innovation</h3>
+      <div class="project-item">
+        <h4>Tkinter Annotation Tool</h4>
+        <p>Desktop application for image annotation integrated with API-based auto-annotation system. Users purchase tokens for each automated annotation.</p>
+      </div>
+      <div class="project-item">
+        <h4>Web Scraping & Automation</h4>
+        <p>Built multiple automation tools including web scraping, automated screenshot capture of web pages, and data extraction utilities.</p>
+      </div>
+
+      <h3 style="margin-top: 20px; color: #10b981;">📚 Previous Experience</h3>
+      <p><strong>Machine Learning Internship</strong> @ Zephyr Technologies & Solutions Pvt Ltd (1 month)</p>
+      <ul>
+        <li>Learned Python fundamentals and machine learning concepts</li>
+        <li>Developed communication and technical skills</li>
+        <li>Worked on foundational ML projects</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Education</h2>
+      
+      <h3>Bachelor of Engineering (Computer Science Engineering) 🎓</h3>
+      <p><strong>SDM Institute of Technology (SDMIT), Ujire</strong></p>
+      <p class="right">June 2024 • CGPA: 7.09</p>
+      
+      <h4 style="color: var(--accent); margin-top: 12px;">Final Year Project: Crop Disease Detection and Recommendation System</h4>
+      <ul>
+        <li>Developed AI-based system to detect crop diseases using leaf images</li>
+        <li>Provided treatment recommendations for identified diseases</li>
+        <li>Suggested suitable crops based on soil conditions analysis</li>
+      </ul>
+
+      <h3>Pre-University Course (Science) 📖</h3>
+      <p><strong>Himalaya College, Ankola</strong></p>
+      <p class="right">March 2020</p>
+
+      <h3>Secondary School Certificate (SSLC) 🏫</h3>
+      <p><strong>Shree Ramanatha School, Urkeri, Kumta</strong></p>
+      <p class="right">April 2017</p>
+    </div>
+
+    <div class="card">
+      <h2>Key Achievements & Impact</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+        <div class="project-item">
+          <h4>133+ Devices Monitored</h4>
+          <p>Built centralized monitoring system for all Decathlon stores, eliminating manual checks.</p>
+        </div>
+        <div class="project-item">
+          <h4>22 Camera Locations Tracked</h4>
+          <p>Traffic violation monitoring across multiple locations with real-time alerting.</p>
+        </div>
+        <div class="project-item">
+          <h4>~80% Efficiency Gain</h4>
+          <p>Reduced manual operational workload from hours to minutes through intelligent automation.</p>
+        </div>
+        <div class="project-item">
+          <h4>5+ Production Systems</h4>
+          <p>Delivered AI-powered tools and automation systems actively used in production environment.</p>
+        </div>
+        <div class="project-item">
+          <h4>Multi-Platform Expertise</h4>
+          <p>Designed scalable solutions across edge devices, cloud infrastructure, and web applications.</p>
+        </div>
+        <div class="project-item">
+          <h4>End-to-End Solutions</h4>
+          <p>From data collection and preprocessing to model training, testing, and deployment in production.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Connect & Share</h2>
+      <p>Get in touch or share my portfolio:</p>
+      <div class="flex-row">
+        <button class="btn" id="copyButton">📋 Copy Portfolio Link</button>
+        <button class="btn" style="background: #10b981;" onclick="window.open('mailto:imshashankmukri@gmail.com')">📧 Send Email</button>
+        <button class="btn" style="background: #8b5cf6;" onclick="window.open('https://github.com/ShashankIM', '_blank')">🐙 GitHub Profile</button>
+      </div>
+      <p id="copyStatus" style="margin-top: 12px; color: var(--accent);"></p>
+    </div>
+
+    <footer>
+      <p>✨ Portfolio built with HTML • CSS animations • Vanilla JavaScript</p>
+      <p style="margin-top: 8px; color: #475569;">Hosted on GitHub Pages | Last Updated: March 2026</p>
+    </footer>
+  </div>
+
+  <script>
+    // Copy portfolio link functionality
+    document.querySelector('#copyButton').addEventListener('click', function () {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        const status = document.querySelector('#copyStatus');
+        status.textContent = '✅ Portfolio link copied to clipboard!';
+        setTimeout(() => {
+          status.textContent = '';
+        }, 3000);
+      }).catch(() => {
+        document.querySelector('#copyStatus').textContent = '❌ Copy failed. Please copy manually.';
+      });
+    });
+
+    // Scroll animation - add animation class on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = getComputedStyle(entry.target).animation || 'fadeInUp 0.6s ease-out forwards';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.card').forEach(card => {
+      observer.observe(card);
+    });
+
+    // Smooth scroll behavior for links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
